@@ -2,4 +2,4 @@
 #заканчивается предпоследним с шагом в 3
 
 my_line = "12345678912345"
-print(my_line[4:len(my_line)-1:3])
+print(my_line[4:len(my_line)-2:3])
