@@ -3,7 +3,9 @@
 Иначе вывести надпись “DOMAIN NAME is not supported’"""
 
 line = input("Enter email: ")
-if "gmail.com" in line:
+line_01 = line[::-1]
+line_01 = line_01[:9]
+if line_01 == "moc.liamg":
     print(line)
 else:
     print("DOMAIN NAME is not supported")
