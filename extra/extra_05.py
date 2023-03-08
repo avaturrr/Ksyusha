@@ -1,10 +1,12 @@
 """"Есть список arr = [1,2,3,4,4,4,5,5,2]
-Найти массив квадратов"""
+Найти кумулятивную сумму"""
 
 arr = [1, 2, 3, 4, 4, 4, 5, 5, 2]
 i = 0
-sum = 1
+cusum = []
+sum = 0
 while i < len(arr):
-    sum = sum * arr[i]
+    sum += arr[i]
+    cusum.append(sum)
     i +=1
-print(sum ** (1 / len(arr)))
+print(cusum)
