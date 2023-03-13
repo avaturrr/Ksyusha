@@ -25,3 +25,4 @@ if len(ordered_arr) % 2 == 0:
 else:
     mediana = ordered_arr[int((len(ordered_arr) + 1) / 2) - 1]
     print(mediana)
+
