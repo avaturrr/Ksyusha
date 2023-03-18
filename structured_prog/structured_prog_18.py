@@ -4,9 +4,8 @@
 
 from random import randint
 arr = []
-amount_items = 5
-for a in range(amount_items):
-    arr.append([randint(1, 10) for b in range(amount_items)])
+for a in range(5):
+    arr.append([randint(1, 10) for b in range(5)])
 print(arr)
 diagonal = 0
 for arr_01 in arr:
