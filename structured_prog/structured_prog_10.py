@@ -19,6 +19,6 @@ print(new_dict)"""
 new_dict = {}
 i = 0
 while i < len(my_dict):
-    print(my_dict.keys())
+    my_dict[key] =
     i += 1
 
