@@ -18,7 +18,8 @@ print(new_dict)"""
 #с циклом while
 new_dict = {}
 i = 0
-while i < len(my_dict):
-    my_dict[key] =
+arr = list(my_dict.keys())
+while i < len(arr):
+    new_dict[arr[i] + str(len(arr[i]))] = my_dict.pop(arr[i])
     i += 1
-
+print(new_dict)
