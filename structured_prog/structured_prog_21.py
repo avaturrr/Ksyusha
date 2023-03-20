@@ -12,4 +12,5 @@ for i in range(m, n):
         if i % k == 0:
             arr.append(k)
     my_dict[key] = arr
-print(my_dict)
+for key, value in my_dict.items():
+    print(f"{key}: {value}")
