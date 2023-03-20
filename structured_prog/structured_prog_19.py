@@ -22,3 +22,16 @@ for arr_01 in arr:
     diagonal += 1
 print(arr)
 
+from random import randint
+arr = []
+for a in range(5):
+    arr.append([randint(1, 10) for b in range(5)])
+print(arr)
+for index, item in enumerate(arr):
+    max_01 = max(item)
+    index_max_01 = item.index(max_01)
+    item[index_max_01], item[index] = item[index], item[index_max_01]
+print(arr)
+
+
+
