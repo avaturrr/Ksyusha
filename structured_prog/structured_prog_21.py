@@ -5,10 +5,10 @@
 m = int(input("Enter m: "))
 n = int(input("Enter n: "))
 my_dict = {}
-for i in range(m, n):
+for i in range(m, n + 1):
     key = i
     arr = []
-    for k in range(2, i - 1):
+    for k in range(2, i):
         if i % k == 0:
             arr.append(k)
     my_dict[key] = arr
