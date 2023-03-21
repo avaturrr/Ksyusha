@@ -4,11 +4,17 @@
 лежащих в диапазоне от 200 до 300.
 """
 
-sum = 1
-for i in range(200, 300):
-    for k in range(2, 300):
+sum = 0
+sum_02 = 0
+for i in range(220, 300):
+    for k in range(1, 300):
         if i % k == 0 and k != i:
             sum += k
     if sum >= 200 and sum <= 300:
+        for i_02 in range(1, sum):
+            if sum % i_02 == 0:
+                sum_02 += i_02
+    if i == sum_02:
         print(i, sum)
-    sum = 1
+    sum = 0
+    sum_02 = 0
