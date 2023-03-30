@@ -14,16 +14,19 @@ def my_decorator(func):
         result = func(*args, **kwargs)
         finish_time = datetime.now()
         delta = finish_time - start_time
+        print(delta)
         return result
 
     return inner
 
 
 @my_decorator
-def very_important_func(arr):
-    arr = list(map(lambda i: i * 2, arr))
+def very_importent_func(arr):
+    from time import sleep
+    arr = list(map(lambda x: x * 2, arr))
+    print(arr)
     return arr
 
 
-very_important_func([randint(1, 20) for i in range(20)])
-print(very_important_func)
+arr = [i for i in range(100)]
+very_importent_func(arr)
