@@ -4,6 +4,7 @@ time = datetime.now()
 """
 from datetime import datetime
 from functools import wraps
+from random import randint
 
 
 def my_decorator(func):
@@ -14,11 +15,15 @@ def my_decorator(func):
         finish_time = datetime.now()
         delta = finish_time - start_time
         return result
+
     return inner
+
 
 @my_decorator
 def very_important_func(arr):
-    from time import sleep
-    arr = list(map(lambda ))
+    arr = list(map(lambda i: i * 2, arr))
+    return arr
 
-very_important_func()
+
+very_important_func([randint(1, 20) for i in range(20)])
+print(very_important_func)
