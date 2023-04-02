@@ -4,8 +4,10 @@
 среди всех чисел в диапазоне [1, n);
 – второй элемент – длина его траектории."""
 
-#v1
-"""def collatz(n):
+"""
+#v1 
+#где-то 24 сек выполняется
+def collatz(n):
     my_dict = {}
     for i in range(2, n + 1):
         item = i
@@ -24,8 +26,15 @@
 
 
 def main():
-    print(collatz(10))"""
+    print(collatz(1000000))
+if __name__ == "__main__":
+    main()
+"""
 
+
+# v2 добавлен поиск по словарю, чтобы каждый раз не допечатывать весь список,
+# если такое уже было в словаре
+# где-то 14 сек выполняется
 def collatz(n):
     my_dict = {}
     for i in range(2, n + 1):
@@ -42,12 +51,14 @@ def collatz(n):
                 item = item // 2
                 my_list.append(item)
         my_dict[str(i)] = my_list
-    new_dict = {int(len(values)) : int(key) for key, values in my_dict.items()}
+    new_dict = {int(len(values)): int(key) for key, values in my_dict.items()}
     max_len = max(new_dict.keys())
     return new_dict[max_len], max_len
 
 
 def main():
-    print(collatz(5))
+    print(collatz(1000000))
+
+
 if __name__ == "__main__":
     main()
