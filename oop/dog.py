@@ -7,11 +7,18 @@ oop_02
 
 
 class Dog:
-    pass
+    def jump(self):
+        print("Jump!")
+
+    def run(self):
+        print("Run!")
 
 
 dog_1 = Dog()
+dog_1.run()
+dog_1.jump()
 dog_2 = Dog()
-
+dog_2.jump()
+dog_2.run()
 print(dog_1)
 print(dog_2)
