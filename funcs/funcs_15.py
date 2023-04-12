@@ -7,8 +7,10 @@ def my_func(word: str):
     my_list = list(word)
     if my_list == my_list[::-1]:
         print("это палиндром")
+        return True
     else:
         print("это не палиндром")
+        return False
 
 
 def main():

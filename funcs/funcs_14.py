@@ -13,7 +13,7 @@ def my_func(n: int):
             factorial *= i
     return factorial
 def main():
-    factorial = my_func(6)
+    factorial = my_func(3)
     print(factorial)
 if __name__ == '__main__':
     main()

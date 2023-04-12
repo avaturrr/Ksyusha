@@ -36,12 +36,20 @@ class Dog:
     def get_master(self):
         return self.__master
 
-    def __init__(self, height, weight, name, age, master):
+    def get_city(self):
+        return self.__city
+
+    def set_city(self, new_city):
+        self.__city = new_city
+        return self.__city
+
+    def __init__(self, height, weight, name, age, master, city="Minsk"):
         self.height = height
         self.weight = weight
         self.name = name
         self.age = age
         self.__master = master
+        self.__city = city
 
 
 dog_1 = Dog(50, 14, "Bobik", 3, "b")
@@ -49,11 +57,15 @@ print(f"height {dog_1.height}, weight {dog_1.weight}, name {dog_1.name}, age {do
 dog_1.run()
 dog_1.jump()
 dog_1.bark()
+print(dog_1.get_city())
+print(dog_1.set_city("Brest"))
 dog_2 = Dog(100, 30, "Tuzik", 4, "t")
 print(f"height {dog_2.height}, weight {dog_2.weight}, name {dog_2.name}, age {dog_2.age}")
 dog_2.jump()
 dog_2.run()
 dog_2.bark()
+print(dog_2.get_city())
+print(dog_2.set_city("Pinsk"))
 
 dog_3 = Dog(13, 2, "Woof", 1, "w")
 print(f"Dog_3 name {dog_3.name}")
