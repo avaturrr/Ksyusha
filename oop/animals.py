@@ -51,17 +51,32 @@ class Pet:
     def sleep(self):
         print(f"Sleep {self.name}")
 
+    def new_jump(self, jump_height):
+        print(f"Jump {jump_height} meters")
+
+
 
 class Dog(Pet):
 
     def bark(self):
         print(f"Bark {self.name}")
 
+    def new_jump(self, jump_height):
+        if jump_height > 0.5:
+            print("Dogs cannot jump so high")
+        else:
+            super().new_jump(jump_height)
+
 
 class Cat(Pet):
 
     def meow(self):
         print(f"Meow {self.name}")
+    def new_jump(self, jump_height):
+        if jump_height > 2:
+            print("Cats cannot jump so high")
+        else:
+            super().new_jump(jump_height)
 
 
 class Parrot(Pet):
@@ -84,6 +99,12 @@ class Parrot(Pet):
         else:
             self.height += 0.5
 
+    def new_jump(self, jump_height):
+        if jump_height > 0.05:
+            print("Parrots cannot jump so high")
+        else:
+            super().new_jump(jump_height)
+
 
 dog_01 = Dog("a", 3, "AF", 2, 30)
 dog_01.bark()
@@ -95,6 +116,7 @@ print(dog_01.age)
 dog_01.change_height()
 dog_01.change_weight(0.5)
 print(f"weight {dog_01.weight} height {dog_01.height}")
+dog_01.new_jump(0.3)
 
 cat_01 = Cat("c", 2, "CF", 5, 20)
 cat_01.meow()
@@ -106,7 +128,7 @@ print(cat_01.age)
 cat_01.change_height()
 cat_01.change_weight(0.5)
 print(f"weight {cat_01.weight} height {cat_01.height}")
-
+cat_01.new_jump(4)
 
 parrot_01 = Parrot("f", 25, "FF", 0.1, 10)
 parrot_01.fly()
@@ -119,5 +141,5 @@ parrot_01.change_height()
 parrot_01.change_weight(0.5)
 print(f"weight {parrot_01.weight} height {parrot_01.height}")
 parrot_01.fly()
-
+parrot_01.new_jump(4)
 
