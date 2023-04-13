@@ -17,10 +17,21 @@ oop_05
 oop_06
 Добавить в метод инициализации новый приватный атрибут - master.
 Создать метод get_master() который возвращает значение атрибута master.
+oop_08
+Сделать все атрибуты класса Dog приватными. Сделать для каждого атрибута
+getter и setter используя декораторы. Все change методы удалить
 """
 
 
 class Dog:
+    def __init__(self, height, weight, name, age, master, city="Minsk"):
+        self.__height = height
+        self.__weight = weight
+        self.__name = name
+        self.__age = age
+        self.__master = master
+        self.__city = city
+
     def jump(self):
         print("Jump!")
 
@@ -29,9 +40,6 @@ class Dog:
 
     def bark(self):
         print("Woof-woof")
-
-    def change_name(self, new_name):
-        self.name = new_name
 
     def get_master(self):
         return self.__master
@@ -42,14 +50,49 @@ class Dog:
     def set_city(self, new_city):
         self.__city = new_city
         return self.__city
+    @property
+    def height(self):
+        return self.__height
+    @height.setter
+    def height(self, new_height):
+        self.__height = new_height
 
-    def __init__(self, height, weight, name, age, master, city="Minsk"):
-        self.height = height
-        self.weight = weight
-        self.name = name
-        self.age = age
-        self.__master = master
-        self.__city = city
+    @property
+    def weight(self):
+        return self.__weight
+    @weight.setter
+    def weight(self, new_weight):
+        self.__height = new_weight
+    @property
+    def name(self):
+        return self.__name
+    @name.setter
+    def name(self, new_name):
+        self.__name = new_name
+
+    @property
+    def age(self):
+        return self.__age
+    @age.setter
+    def age(self, new_age):
+        self.__age = new_age
+
+    @property
+    def master(self):
+        return self.__master
+    @master.setter
+    def master(self, new_master):
+        self.__master = new_master
+
+    @property
+    def city(self):
+        return self.__city
+
+    @city.setter
+    def city(self, new_city):
+        self.__city = new_city
+
+
 
 
 dog_1 = Dog(50, 14, "Bobik", 3, "b")
@@ -68,8 +111,6 @@ print(dog_2.get_city())
 print(dog_2.set_city("Pinsk"))
 
 dog_3 = Dog(13, 2, "Woof", 1, "w")
-print(f"Dog_3 name {dog_3.name}")
-dog_3.change_name("Foow")
 print(f"Dog_3 name {dog_3.name}")
 
 print(f"dog_3 master {dog_3.get_master()}")
