@@ -15,6 +15,8 @@ oop_13
 oop_14
 Переопределить методы change_weight, change_height в классе Parrot.
 В случае непередачи параметра - вес изменяется на 0.05
+oop_16
+Добавить в класс Parrot  новый атрибут - species
 """
 
 
@@ -55,7 +57,6 @@ class Pet:
         print(f"Jump {jump_height} meters")
 
 
-
 class Dog(Pet):
 
     def bark(self):
@@ -72,6 +73,7 @@ class Cat(Pet):
 
     def meow(self):
         print(f"Meow {self.name}")
+
     def new_jump(self, jump_height):
         if jump_height > 2:
             print("Cats cannot jump so high")
@@ -80,6 +82,9 @@ class Cat(Pet):
 
 
 class Parrot(Pet):
+    def __init__(self, name, age, master, weight, height, species):
+        super().__init__(name, age, master, weight, height)
+        self.species = species
 
     def fly(self):
         if self.weight > 0.1:
@@ -130,7 +135,7 @@ cat_01.change_weight(0.5)
 print(f"weight {cat_01.weight} height {cat_01.height}")
 cat_01.new_jump(4)
 
-parrot_01 = Parrot("f", 25, "FF", 0.1, 10)
+parrot_01 = Parrot("f", 25, "FF", 0.1, 10, "asd")
 parrot_01.fly()
 parrot_01.jump()
 parrot_01.sleep()
@@ -142,4 +147,4 @@ parrot_01.change_weight(0.5)
 print(f"weight {parrot_01.weight} height {parrot_01.height}")
 parrot_01.fly()
 parrot_01.new_jump(4)
-
+print(parrot_01.species)
