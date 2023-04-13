@@ -7,12 +7,14 @@ oop_12
 Унаследовать Dog, Cat, Parrot от класса Pet.
 Удалить в дочерних классах те методы, которые имеются у родительского класса.
 Создать объект каждого класса и вызвать все его методы.
-oop_12
+oop_13
 Добавить два новых атрибута в родительский класс: weight и height.
 Добавить методы change_weight, change_height принимающий один параметр
 и прибавляющий его к соответствующему аргументу. В случае если параметр не был передан, увеличивать на 0.2.
 Изменить метод fly класса Parrot. Если вес больше 0.1 выводить сообщение This parrot cannot fly.
-
+oop_14
+Переопределить методы change_weight, change_height в классе Parrot.
+В случае непередачи параметра - вес изменяется на 0.05
 """
 
 
@@ -69,6 +71,18 @@ class Parrot(Pet):
             print("This parrot cannot fly")
         else:
             print(f"Fly {self.name}")
+
+    def change_weight(self, number=None):
+        if number:
+            self.weight += number
+        else:
+            self.weight += 0.5
+
+    def change_height(self, number=None):
+        if number:
+            self.height += number
+        else:
+            self.height += 0.5
 
 
 dog_01 = Dog("a", 3, "AF", 2, 30)
