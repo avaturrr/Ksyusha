@@ -17,6 +17,11 @@ oop_14
 В случае непередачи параметра - вес изменяется на 0.05
 oop_16
 Добавить в класс Parrot  новый атрибут - species
+oop_17
+Добавить в класс Pet пустой метод voice. Заменить имена методов bark, meow на voice.
+Добавить voice для класса Parrot.
+Создать функцию, принимающую список животных и вызывающую у каждого животного метод voice.
+
 """
 
 
@@ -56,10 +61,13 @@ class Pet:
     def new_jump(self, jump_height):
         print(f"Jump {jump_height} meters")
 
+    def voice(self):
+        pass
+
 
 class Dog(Pet):
 
-    def bark(self):
+    def voice(self):
         print(f"Bark {self.name}")
 
     def new_jump(self, jump_height):
@@ -71,7 +79,7 @@ class Dog(Pet):
 
 class Cat(Pet):
 
-    def meow(self):
+    def voice(self):
         print(f"Meow {self.name}")
 
     def new_jump(self, jump_height):
@@ -110,41 +118,50 @@ class Parrot(Pet):
         else:
             super().new_jump(jump_height)
 
+    def voice(self):
+        print(f"AAAAA {self.name}")
 
 dog_01 = Dog("a", 3, "AF", 2, 30)
-dog_01.bark()
-dog_01.jump()
-dog_01.sleep()
-dog_01.run()
-dog_01.birthday()
-print(dog_01.age)
-dog_01.change_height()
-dog_01.change_weight(0.5)
-print(f"weight {dog_01.weight} height {dog_01.height}")
-dog_01.new_jump(0.3)
-
+# dog_01.bark()
+# dog_01.jump()
+# dog_01.sleep()
+# dog_01.run()
+# dog_01.birthday()
+# print(dog_01.age)
+# dog_01.change_height()
+# dog_01.change_weight(0.5)
+# print(f"weight {dog_01.weight} height {dog_01.height}")
+# dog_01.new_jump(0.3)
+#
 cat_01 = Cat("c", 2, "CF", 5, 20)
-cat_01.meow()
-cat_01.jump()
-cat_01.sleep()
-cat_01.run()
-cat_01.birthday()
-print(cat_01.age)
-cat_01.change_height()
-cat_01.change_weight(0.5)
-print(f"weight {cat_01.weight} height {cat_01.height}")
-cat_01.new_jump(4)
-
+# cat_01.meow()
+# cat_01.jump()
+# cat_01.sleep()
+# cat_01.run()
+# cat_01.birthday()
+# print(cat_01.age)
+# cat_01.change_height()
+# cat_01.change_weight(0.5)
+# print(f"weight {cat_01.weight} height {cat_01.height}")
+# cat_01.new_jump(4)
+#
 parrot_01 = Parrot("f", 25, "FF", 0.1, 10, "asd")
-parrot_01.fly()
-parrot_01.jump()
-parrot_01.sleep()
-parrot_01.run()
-parrot_01.birthday()
-print(parrot_01.age)
-parrot_01.change_height()
-parrot_01.change_weight(0.5)
-print(f"weight {parrot_01.weight} height {parrot_01.height}")
-parrot_01.fly()
-parrot_01.new_jump(4)
-print(parrot_01.species)
+# parrot_01.fly()
+# parrot_01.jump()
+# parrot_01.sleep()
+# parrot_01.run()
+# parrot_01.birthday()
+# print(parrot_01.age)
+# parrot_01.change_height()
+# parrot_01.change_weight(0.5)
+# print(f"weight {parrot_01.weight} height {parrot_01.height}")
+# parrot_01.fly()
+# parrot_01.new_jump(4)
+# print(parrot_01.species)
+
+def animals_voices(*args):
+    for i in args:
+        i.voice()
+
+
+animals_voices(dog_01, cat_01, parrot_01)
