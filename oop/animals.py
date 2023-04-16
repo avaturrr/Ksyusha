@@ -21,6 +21,11 @@ oop_17
 Добавить в класс Pet пустой метод voice. Заменить имена методов bark, meow на voice.
 Добавить voice для класса Parrot.
 Создать функцию, принимающую список животных и вызывающую у каждого животного метод voice.
+oop_18
+Унаследовать от класса Pet два класса: Horse, Donkey.
+Переопределить в классах методы voice.
+Создать класс Mule. Класс Mule должен наследоваться от классов Horse и Donkey.
+Метод voice должен быть унаследован от класса Donkey
 
 """
 
@@ -121,6 +126,22 @@ class Parrot(Pet):
     def voice(self):
         print(f"AAAAA {self.name}")
 
+
+class Horse(Pet):
+    def voice(self):
+        print(f"I-go-go {self.name}")
+
+
+class Donkey(Pet):
+    def voice(self):
+        print(f"А мы уже приехали? {self.name}")
+
+
+class Mule(Donkey, Horse):
+    def voice(self):
+        super().voice()
+
+
 dog_01 = Dog("a", 3, "AF", 2, 30)
 # dog_01.bark()
 # dog_01.jump()
@@ -146,6 +167,8 @@ cat_01 = Cat("c", 2, "CF", 5, 20)
 # cat_01.new_jump(4)
 #
 parrot_01 = Parrot("f", 25, "FF", 0.1, 10, "asd")
+
+
 # parrot_01.fly()
 # parrot_01.jump()
 # parrot_01.sleep()
@@ -165,3 +188,10 @@ def animals_voices(*args):
 
 
 animals_voices(dog_01, cat_01, parrot_01)
+
+horse_01 = Horse("h", 45, "DS", 0.6, 13)
+horse_01.voice()
+donkey_01 = Donkey("d", 55, "HH", 0.4, 11)
+donkey_01.voice()
+mule_01 = Mule("c", 65, "IK", 1, 15)
+mule_01.voice()
