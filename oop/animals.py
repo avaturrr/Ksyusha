@@ -34,6 +34,7 @@ oop_19
 
 
 class Pet:
+    counter = 0
 
     def __init__(self, name, age, master, weight, height):
         self.name = name
@@ -41,6 +42,7 @@ class Pet:
         self.master = master
         self.weight = weight
         self.height = height
+        Pet.counter += 1
 
     def change_weight(self, number=None):
         if number:
@@ -214,3 +216,5 @@ mule_01 = Mule("c", 65, "IK", 1, 15)
 mule_01.voice()
 mule_02 = Mule("c", 65, "IK", 1, 11)
 print(mule_01 != mule_02)
+
+print(Pet.counter)
