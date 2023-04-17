@@ -29,12 +29,14 @@ oop_18
 oop_19
 Определить магические методы сравнения для класса Pet: на равенство и неравенство.
 Два животных равны тогда, когда равны их возрасты, их рост и вес и класс.
+oop_22
+Сделать атрибут counter приватным. Создать метод класса get_counter. Создать три объекта класса. Вызвать через класс метод get_counter.
 
 """
 
 
 class Pet:
-    counter = 0
+    __counter = 0
 
     def __init__(self, name, age, master, weight, height):
         self.name = name
@@ -42,7 +44,11 @@ class Pet:
         self.master = master
         self.weight = weight
         self.height = height
-        Pet.counter += 1
+        Pet.__counter += 1
+
+    @classmethod
+    def get_counter(cls):
+        return cls.__counter
 
     def change_weight(self, number=None):
         if number:
@@ -217,4 +223,4 @@ mule_01.voice()
 mule_02 = Mule("c", 65, "IK", 1, 11)
 print(mule_01 != mule_02)
 
-print(Pet.counter)
+print(Pet.get_counter())
