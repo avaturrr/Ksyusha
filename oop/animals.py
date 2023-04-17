@@ -33,6 +33,8 @@ oop_22
 Сделать атрибут counter приватным. Создать метод класса get_counter. Создать три объекта класса. Вызвать через класс метод get_counter.
 
 """
+import random
+import string
 
 
 class Pet:
@@ -49,6 +51,12 @@ class Pet:
     @classmethod
     def get_counter(cls):
         return cls.__counter
+
+    @staticmethod
+    def get_random_name():
+        result = random.choice(string.ascii_uppercase) + "-" + random.choice(string.digits) + random.choice(
+            string.digits)
+        return result
 
     def change_weight(self, number=None):
         if number:
@@ -224,3 +232,6 @@ mule_02 = Mule("c", 65, "IK", 1, 11)
 print(mule_01 != mule_02)
 
 print(Pet.get_counter())
+
+print(Pet.get_random_name())
+print(Pet.get_random_name())
