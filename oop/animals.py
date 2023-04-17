@@ -26,6 +26,9 @@ oop_18
 Переопределить в классах методы voice.
 Создать класс Mule. Класс Mule должен наследоваться от классов Horse и Donkey.
 Метод voice должен быть унаследован от класса Donkey
+oop_19
+Определить магические методы сравнения для класса Pet: на равенство и неравенство.
+Два животных равны тогда, когда равны их возрасты, их рост и вес и класс.
 
 """
 
@@ -68,6 +71,20 @@ class Pet:
 
     def voice(self):
         pass
+
+    def __eq__(self, other):
+        if self.age == other.age and self.height == other.height and self.weight == other.weight and type(self) == type(
+                other):
+            return True
+        else:
+            return False
+
+    def __ne__(self, other):
+        if self.age == other.age and self.height == other.height and self.weight == other.weight and type(self) == type(
+                other):
+            return False
+        else:
+            return True
 
 
 class Dog(Pet):
@@ -195,3 +212,5 @@ donkey_01 = Donkey("d", 55, "HH", 0.4, 11)
 donkey_01.voice()
 mule_01 = Mule("c", 65, "IK", 1, 15)
 mule_01.voice()
+mule_02 = Mule("c", 65, "IK", 1, 11)
+print(mule_01 != mule_02)
