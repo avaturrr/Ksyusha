@@ -31,15 +31,19 @@ oop_19
 Два животных равны тогда, когда равны их возрасты, их рост и вес и класс.
 oop_22
 Сделать атрибут counter приватным. Создать метод класса get_counter. Создать три объекта класса. Вызвать через класс метод get_counter.
+00p_25
+Сделать класс Pet абстрактным
 
 """
 import random
 import string
+from abc import ABC, abstractmethod
 
 
-class Pet:
+class Pet(ABC):
     __counter = 0
 
+    @abstractmethod
     def __init__(self, name, age, master, weight, height):
         self.name = name
         self.age = age
@@ -48,46 +52,55 @@ class Pet:
         self.height = height
         Pet.__counter += 1
 
-    @classmethod
+    @abstractmethod
     def get_counter(cls):
         return cls.__counter
 
-    @staticmethod
+    @abstractmethod
     def get_random_name():
         result = random.choice(string.ascii_uppercase) + "-" + random.choice(string.digits) + random.choice(
             string.digits)
         return result
 
+    @abstractmethod
     def change_weight(self, number=None):
         if number:
             self.weight += number
         else:
             self.weight += 0.2
 
+    @abstractmethod
     def change_height(self, number=None):
         if number:
             self.height += number
         else:
             self.height += 0.2
 
+    @abstractmethod
     def run(self):
         print(f"Run {self.name}")
 
+    @abstractmethod
     def jump(self):
         print(f"Jump {self.name}")
 
+    @abstractmethod
     def birthday(self):
         self.age += 1
 
+    @abstractmethod
     def sleep(self):
         print(f"Sleep {self.name}")
 
+    @abstractmethod
     def new_jump(self, jump_height):
         print(f"Jump {jump_height} meters")
 
+    @abstractmethod
     def voice(self):
         pass
 
+    @abstractmethod
     def __eq__(self, other):
         if self.age == other.age and self.height == other.height and self.weight == other.weight and type(self) == type(
                 other):
@@ -95,6 +108,7 @@ class Pet:
         else:
             return False
 
+    @abstractmethod
     def __ne__(self, other):
         if self.age == other.age and self.height == other.height and self.weight == other.weight and type(self) == type(
                 other):
@@ -235,3 +249,5 @@ print(Pet.get_counter())
 
 print(Pet.get_random_name())
 print(Pet.get_random_name())
+
+pet_0 = Pet("c", 65, "IK", 1, 11)
