@@ -39,19 +39,19 @@ def collatz(n):
     my_dict = {}
     for i in range(2, n + 1):
         item = i
-        my_list = []
+        my_list = 0
         while item != 1:
             if str(item) in my_dict.keys():
-                my_list = my_list + my_dict[str(item)]
+                my_list += my_dict[str(item)]
                 break
             elif item % 2:
                 item = 3 * item + 1
-                my_list.append(item)
+                my_list += 1
             else:
                 item = item // 2
-                my_list.append(item)
+                my_list += 1
         my_dict[str(i)] = my_list
-    new_dict = {int(len(values)): int(key) for key, values in my_dict.items()}
+    new_dict = {int(values): int(key) for key, values in my_dict.items()}
     max_len = max(new_dict.keys())
     return new_dict[max_len], max_len
 
