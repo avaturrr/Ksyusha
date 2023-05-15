@@ -2,7 +2,8 @@
 -- Атрибуты: id(integer primary key autoincrement),
 -- title(varchar), pages(int), author(varchar), price(float)
 -- 07 Получить название, год и цену всех книг, год которых равен 2010
--- Установить цену равную 10 тем книгам, год которых равен 2010
+-- 08 Установить цену равную 10 тем книгам, год которых равен 2010
+-- 09 Удалить все книги цена которых больше 10
 
 create table book (
     id integer primary key autoincrement,
@@ -24,3 +25,5 @@ select release_year, title, price from book;
 select title, release_year, price from book where release_year = 2010;
 
 update book set price = 10 where release_year = 2010;
+
+delete from book where price > 10;
