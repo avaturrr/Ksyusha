@@ -9,3 +9,4 @@ create table book (
     author varchar,
     price float
 );
+
