@@ -12,3 +12,4 @@ user_table = Table("Book", metadata,
                    Column("pages", Integer), Column("author", VARCHAR), Column("price", Float),
                    Column("release_year", Integer))
 metadata.create_all(engine)
+
