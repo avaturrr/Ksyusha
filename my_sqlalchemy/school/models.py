@@ -26,5 +26,19 @@ class Group(Base):
     def __init__(self, name):
         self.name = name
 
+
+class Student(Base):
+    __tablename__ = "students"
+    id = Column(Integer, primary_key=True)
+    firstname = Column(String)
+    lastname = Column(String)
+    group_id = Column(Integer)
+
+    def __init__(self, firstname, lastname):
+        self.firstname = firstname
+        self.lastname = lastname
+
+
+
 Base.metadata.create_all(engine)
 session = sessionmaker(bind=engine)()

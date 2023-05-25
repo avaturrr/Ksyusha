@@ -3,9 +3,3 @@
 
 Создать файл sqlalchemy_11.py. Создать две группы. Добавить в каждую по три студента.
 """
-from sqlalchemy.orm import declarative_base
-
-Base = declarative_base()
-class Student(Base):
-    __tablename__ = "students"
-    id = Column
