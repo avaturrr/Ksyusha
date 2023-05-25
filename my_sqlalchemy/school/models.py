@@ -3,7 +3,7 @@
 Группа характеризуется названием(name).
 """
 from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy_utils import database_exists, create_database
 
 DB_USER = "postgres"
@@ -24,7 +24,7 @@ class Group(Base):
     name = Column(String)
 
     def __init__(self, name):
-        self.name
+        self.name = name
 
 Base.metadata.create_all(engine)
-
+session = sessionmaker(bind=engine)()
