@@ -27,3 +27,4 @@ class Book:
 Session = sessionmaker(bind=engine)
 session1 = Session()
 session2 = Session()
+session3 = Session()
