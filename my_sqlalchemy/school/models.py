@@ -2,7 +2,7 @@
 Создать таблицу Учебной группы(Group) с помощью sqlalchemy в декларативном стиле.
 Группа характеризуется названием(name).
 """
-from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, Table
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship, backref
 from sqlalchemy_utils import database_exists, create_database
 
@@ -57,6 +57,24 @@ class Dairy(Base):
     def __init__(self, avg_score, student):
         self.avg_score = avg_score
         self.students = student
+
+
+association_table = Table("association", Base.metadata,
+                          Column("id", Integer, primary_key=True),
+                          Column("book_id", Integer, ForeignKey("book.id")),
+                          Column("student_id", Integer, ForeignKey("student.id")))
+
+
+class Book(Base):
+    __tablename__ = "book"
+    id = Column(Integer, primary_key=True)
+    title = Column(String)
+    pages = Column(Integer)
+    students = relationship("Student", secondary=association_table, backref="books")
+
+    def __init__(self, title, pages):
+        self.title = title
+        self.pages = pages
 
 
 Base.metadata.create_all(engine)
