@@ -2,9 +2,10 @@
 from my_sqlalchemy.school.models import session, Student, Dairy
 
 student_all = session.query(Student).all()
+print(student_all)
 arr = []
 for student in student_all:
-    avg_score = float(input(f"Enter avg score for student {student.firstname} -"))
+    avg_score = float(input(f"Enter avg score for student {student.firstname} - "))
     diary = Dairy(avg_score, student)
     arr.append(diary)
 

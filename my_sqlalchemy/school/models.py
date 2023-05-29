@@ -44,6 +44,7 @@ class Student(Base):
         self.lastname = lastname
         self.group = group
 
+
 #
 class Dairy(Base):
     __tablename__ = "dairy"
@@ -51,11 +52,11 @@ class Dairy(Base):
     avg_score = Column(Float)
     student_id = Column(Integer, ForeignKey("student.id"), nullable=False)
     students = relationship("Student", foreign_keys="Dairy.student_id",
-                            backref=backref("students", uselist=False))
+                            backref=backref("diary", uselist=False))
 
     def __init__(self, avg_score, student):
         self.avg_score = avg_score
-        self.student = student
+        self.students = student
 
 
 Base.metadata.create_all(engine)
