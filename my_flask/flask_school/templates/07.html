@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<a href="{{url_for('add_groups')}}">add group</a><br>
+<table border="1">
+    <tr>
+        <td>groups id</td>
+        <td>groups name</td>
+        <td>update group</td>
+        <td>delete group</td>
+    </tr>
+    {% for group in groups %}
+    <tr>
+        <td>{{ group.id }}</td>
+        <td>{{ group.fullname }}</td>
+        <td><a href="{{url_for('update_group', id =group.id )}}">click here for update</a></td>
+        <td><a href="{{url_for('delete_group', id=group.id)}}">click here to delete</a></td>
+    <tr/>
+    {% endfor %}
+</table>
+</body>
+</html>
