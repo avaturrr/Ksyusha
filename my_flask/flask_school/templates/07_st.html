@@ -11,13 +11,15 @@
             <td>student name</td>
             <td>student group</td>
             <td>update student</td>
+            <td>delete student</td>
         </tr>
         <tr>
             {% for student in students %}
             <td>{{ student.id }}</td>
             <td>{{ student.firstname }}</td>
             <td>{{ student.group_id }}</td>
-            <td><a href="{{url_for('update_student')}}">click for update</a></td>
+            <td><a href="{{url_for('update_student', id=student.id)}}">click for update</a></td>
+            <td><a href="{{url_for('delete_st', id=student.id)}}">click for delete</a></td>
         </tr>
         {% endfor %}
     </table>

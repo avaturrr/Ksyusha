@@ -14,15 +14,30 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///flaskschool.db"
 db = SQLAlchemy(app)
 
 
-class Group(db.Model):
+class MyBase(db.Model):
+    __abstract__ = True
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+
+
+class Group(MyBase):
     id = db.Column("id", db.Integer, primary_key=True)
     fullname = db.Column(db.String(100))
 
 
-class Student(db.Model):
+class Student(MyBase):
     id = db.Column("id", db.Integer, primary_key=True)
     firstname = db.Column(db.String(100))
-    group_id = db.Column(db.Integer, ForeignKey(Group.id), nullable=False)
+    group_id = db.Column(db.Integer, ForeignKey(Group.id), nullable=True)
     group = relationship("Group", foreign_keys="Student.group_id", backref="students")
 
 
@@ -44,8 +59,7 @@ def add_groups():
         return render_template("07_add.html")
     else:
         group = Group(fullname=request.form["fullname"])
-        db.session.add(group)
-        db.session.commit()
+        group.save()
         return redirect(url_for("read"))
 
 
@@ -55,8 +69,7 @@ def add_student():
         return render_template("07_add_st.html")
     else:
         student = Student(firstname=request.form["firstname"], group_id=request.form["group_id"])
-        db.session.add(student)
-        db.session.commit()
+        student.save()
         return redirect(url_for("read_students"))
 
 
@@ -68,7 +81,7 @@ def update_group():
         group = db.session.query(Group). \
             filter_by(id=request.args.get("id")).first()
         group.fullname = request.form["fullname"]
-        db.session.commit()
+        group.update()
         return redirect(url_for("read"))
 
 
@@ -77,18 +90,26 @@ def update_student():
     if request.method == "GET":
         return render_template("07_update_st.html", id=request.args.get("id"))
     else:
-        student = db.session.query(Student).filter_by(id=request.args.get("id")).first()
+        student_id = request.args.get("id")
+        student = db.session.query(Student).filter_by(id=student_id).first()
         student.firstname = request.form["firstname"]
         student.group_id = request.form["group_id"]
-        db.session.commit()
+        student.update()
         return redirect(url_for("read_students"))
 
 
 @app.route("/delete_group", methods=["GET"])
 def delete_group():
-    db.session.query(Group).filter_by(id=request.args.get("id")).delete()
-    db.session.commit()
+    group = Group.query.get(request.args.get("id"))
+    group.delete()
     return redirect(url_for("read"))
+
+
+@app.route("/delete_st", methods=["GET"])
+def delete_st():
+    student = Student.query.get(request.args.get("id"))
+    student.delete()
+    return redirect(url_for("read_students"))
 
 
 if __name__ == "__main__":
